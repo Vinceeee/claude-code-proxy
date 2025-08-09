@@ -29,13 +29,12 @@ class Config:
         self.big_model = os.environ.get("BIG_MODEL", "gpt-4o")
         self.middle_model = os.environ.get("MIDDLE_MODEL", self.big_model)
         self.small_model = os.environ.get("SMALL_MODEL", "gpt-4o-mini")
+
+        self.access_token = self.openai_api_key
         
     def validate_api_key(self):
         """Basic API key validation"""
         if not self.openai_api_key:
-            return False
-        # Basic format check for OpenAI API keys
-        if not self.openai_api_key.startswith('sk-'):
             return False
         return True
         
